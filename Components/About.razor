@@ -1,0 +1,43 @@
+﻿@if (show)
+{
+    <div class="popupDiv popupZIndex_1">
+        <div class="col">
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-start" style="font-size: large; font-weight: bold;">
+                    About
+                </div>
+
+                <div class="col d-flex justify-content-end">
+                    <button style="padding: 3px 10px; height: fit-content;" @onclick="() => { Show = !Show; }">X</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <p>
+                    This is an old project I revived. In fact, I wrote about abandoning the idea of making a decentralized pastebin clone in <a href="https://eecs.blog/projects-graveyard/#title11:~:text=in%20the%20future%20%E2%80%A6-,DecentBin%20a%20Decentralized%20PasteBin%20Clone,-I%20was%20planning" target="_blank" rel="noopener noreferrer">this post</a>. 
+                    At the time, I was trying to create a simple dApp(decentralized application) using Sia Skynet as I was planning to use it for another project. Then Sia Skynet shut down, and I abandoned both projects.
+                </p>
+                <p>
+                    However, I recently made an <a href="https://eecs.blog/BlazorApps/CSharpOnlineCompiler/" target="_blank" rel="noopener noreferrer">online C# compiler</a> and decided to use <a href="https://gun.js.org/" target="_blank" rel="noopener noreferrer">GUN.js</a>(decentralized graph database) to store the data and live share the code editor.
+                    This gave me the idea to take some of the code from there, make just a few changes to it and use it for the decentralized pastebin dApp.
+                </p>
+                <p>Developed by <a href="https://eecs.blog" target="_blank" rel="noopener noreferrer">The EECS Blog</a></p>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+
+    private bool show = false;
+    [Parameter]
+    public bool Show
+    {
+        get { return show; }
+        set 
+        { 
+            show = value; 
+            StateHasChanged(); 
+        }
+    }
+}
