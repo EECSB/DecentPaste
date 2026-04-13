@@ -552,7 +552,7 @@
         }
         else if (string.IsNullOrEmpty(PublicID) && string.IsNullOrEmpty(PublicKey) && string.IsNullOrEmpty(ShareKey) && string.IsNullOrEmpty(WorkspaceName) && string.IsNullOrEmpty(SerializedEditorState))
         {
-            string storedState = await localStorage.GetItemAsStringAsync("appstate");
+            string storedState = await localStorage.GetItemAsStringAsync("DecentPasteAppState");
 
             if (string.IsNullOrEmpty(storedState))
             {
@@ -653,7 +653,7 @@
         //'https://gun-manhattan.herokuapp.com/gun' doesn't work anymore
         //'https://eecs.blog/gun' I was trying to run my own node on my blog hosting server but I'm having problems with websockets.
 
-        //We use a public relay peers found at https://github.com/amark/gun/wiki/volunteer.dht
+        //We use public relay peers found at https://github.com/amark/gun/wiki/volunteer.dht
         //For now just hardcode them.
 
 
@@ -673,7 +673,7 @@
 
             OnChange += async () =>
             {
-                await localStorage.SetItemAsStringAsync("appstate", this.ToString());
+                await localStorage.SetItemAsStringAsync("DecentPasteAppState", this.ToString());
             };
         }
 
