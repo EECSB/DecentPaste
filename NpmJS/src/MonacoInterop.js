@@ -50,3 +50,20 @@ window.ToggleMonacoWordwrap = function (value) {
 
 	monacoEditor.updateOptions({ wordWrap: wrap });
 }
+
+window.FormatMonacoEditors = async function () {
+	const model = monacoEditor.getModel();
+	const language = model.getLanguageId();
+
+	if (language === 'json') {
+		try {
+			JSON.parse(model.getValue());
+		} catch (e) {
+			return 'Could not format: editor contains invalid JSON.';
+		}
+	}
+
+	await monacoEditor.getAction('editor.action.formatDocument')?.run();
+
+	return '';
+}
